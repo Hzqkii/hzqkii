@@ -1,16 +1,19 @@
-### Hi there 👋
+```nasm
+section .data
+    msg db "Hey I'm Hzqkii", 0xA
+    len equ $ - msg
 
-<!--
-**Hzqkii/hzqkii** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+section .text
+    global _start
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+_start:
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg
+    mov edx, len
+    int 0x80
+    
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80
+```
